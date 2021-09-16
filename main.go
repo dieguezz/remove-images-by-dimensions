@@ -15,11 +15,11 @@ func main() {
 	if os.Args[0] == "" {
 		log.Fatal("You need to add a valid path")
 	}
-	maxWidth, err := strconv.Atoi(os.Args[2])
+	minWidth, err := strconv.Atoi(os.Args[2])
 	if err != nil {
 		log.Fatal(err)
 	}
-	maxHeight, err := strconv.Atoi(os.Args[3])
+	minHeight, err := strconv.Atoi(os.Args[3])
 	if err != nil {
 		log.Fatal("You need to add a valid min height")
 
@@ -33,7 +33,7 @@ func main() {
 			if err != nil {
 				// fmt.Fprintf(os.Stderr, "%s: %v\n", imgFile.Name(), err)
 			}
-			if im.Width > 0 && (im.Width < maxWidth || im.Height < maxHeight) {
+			if im.Width > 0 && (im.Width < minWidth || im.Height < minHeight) {
 				fmt.Printf("%s %d %d\n", path, im.Width, im.Height)
 				e := os.Remove(path)
 				if e != nil {
